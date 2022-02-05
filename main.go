@@ -57,21 +57,27 @@ func main() {
 			}
 		}
 	}
+	if len(duplicateFiles) != 0 {
 
-	fmt.Printf("You will be deleting %v files. Is this correct?\n Y or N\n", len(duplicateFiles))
-	var delCheck string
-	fmt.Scan(&delCheck)
-	if check == "N" || check == "n" {
-		fmt.Println("Exiting")
-		return
-	}
-
-	// Delete files
-	for _, file := range duplicateFiles {
-		e := os.Remove(file)
-		if e != nil {
-			log.Fatal(e)
+		fmt.Printf("You will be deleting %v files. Is this correct?\n Y or N\n", len(duplicateFiles))
+		var delCheck string
+		fmt.Scan(&delCheck)
+		if check == "N" || check == "n" {
+			fmt.Println("Exiting")
+			return
 		}
+
+		// Delete files
+		for _, file := range duplicateFiles {
+			e := os.Remove(file)
+			if e != nil {
+				log.Fatal(e)
+			}
+			fmt.Printf("Removed %v", file)
+		}
+	} else {
+		fmt.Println("No duplicate files")
+		return
 	}
 
 }
