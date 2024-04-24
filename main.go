@@ -2,6 +2,7 @@ package main
 // This program was originally created by myself in early 2022 as a utility tool, however I have adapted it to fit the requirments set forth by the College Board for this class
 // The repo can be found here https://github.com/ianfights/DuplicateFileChacker
 // I hope this alleviates any confusion from the inevitable result of you finding my GitHub profile
+
 // Code from built-in Go libraries
 import (
 	"crypto/sha256"
@@ -69,6 +70,7 @@ func checkDupFiles(fileHashes[]string, files[]string){
 		fmt.Scan(&delCheck)
 		if delCheck == "N" || delCheck == "n" {
 			fmt.Println("Exiting")
+			os.Exit(0);
 			return
 		}
 
