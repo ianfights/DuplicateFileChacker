@@ -1,4 +1,5 @@
 package main
+
 // This program was originally created by myself in early 2022 as a utility tool, however I have adapted it to fit the requirments set forth by the College Board for this class
 // The repo can be found here https://github.com/ianfights/DuplicateFileChacker
 // I hope this alleviates any confusion from the inevitable result of you finding my GitHub profile
@@ -45,7 +46,7 @@ func main() {
 
 }
 
-func checkDupFiles(fileHashes[]string, files[]string){
+func checkDupFiles(fileHashes []string, files []string) {
 	var duplicateFiles []string
 
 	m := make(map[string]int)
@@ -70,14 +71,14 @@ func checkDupFiles(fileHashes[]string, files[]string){
 		fmt.Scan(&delCheck)
 		if delCheck == "N" || delCheck == "n" {
 			fmt.Println("Exiting")
-			os.Exit(0);
+			os.Exit(0)
 			return
 		}
 
 		// Delete files
 		for i := range duplicateFiles {
 			// Mod by two so only a single dup file is deleted
-			// is there a better way to do this? Undoubtably, but I really could care less because this works
+			// is there a better way to do this? Undoubtably, but I really could care less because this works and is already overkill for this project
 			if i%2 == 0 {
 				e := os.Remove(duplicateFiles[i])
 				if e != nil {
@@ -91,6 +92,7 @@ func checkDupFiles(fileHashes[]string, files[]string){
 		return
 	}
 }
+
 // This method taken from https://medium.com/@manigandand/list-files-in-a-directory-using-golang-963b1df11304
 func scanDirs(root string) ([]string, error) {
 	var files []string
